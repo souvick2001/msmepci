@@ -1,0 +1,181 @@
+<div class="donate-page">
+
+  <!-- Hero Section -->
+  <div class="donate-hero">
+    <h1>Make a Difference Today</h1>
+    <p>Your contribution empowers India's small businesses and transforms lives</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat">
+      <span class="stat-num">12,000+</span>
+      <span class="stat-label">MSMEs Supported</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">28</span>
+      <span class="stat-label">Districts Covered</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">₹2.4Cr+</span>
+      <span class="stat-label">Funds Mobilized</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">5000+</span>
+      <span class="stat-label">Jobs Created</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="donate-content">
+
+    <!-- Left — Motivation -->
+    <div class="motivation">
+      <h2>Why Your Donation Matters</h2>
+      <p class="tagline">हमारा संकल्प, आपका साथ — रोजगार हो हर घर-हर हाथ</p>
+
+      <div class="impact-list">
+        <div class="impact-item">
+          <span class="icon">🏭</span>
+          <div>
+            <strong>Empower Small Entrepreneurs</strong>
+            <p>Help micro and small business owners access training, tools, and financial support to grow their ventures.</p>
+          </div>
+        </div>
+        <div class="impact-item">
+          <span class="icon">👩‍💼</span>
+          <div>
+            <strong>Support Women-Led Businesses</strong>
+            <p>Your donation directly funds women entrepreneurs in rural and semi-urban areas who are building futures for their families.</p>
+          </div>
+        </div>
+        <div class="impact-item">
+          <span class="icon">📚</span>
+          <div>
+            <strong>Skill Development Programs</strong>
+            <p>Enable free vocational training workshops that help youth find employment and build sustainable livelihoods.</p>
+          </div>
+        </div>
+        <div class="impact-item">
+          <span class="icon">🌱</span>
+          <div>
+            <strong>Build a Stronger India</strong>
+            <p>MSMEs are the backbone of India's economy. Every rupee you donate strengthens communities from the ground up.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="amount-btns">
+        <p>Quick Donate</p>
+        <div class="amounts">
+          <button [class.selected]="selectedAmount === 500"   (click)="selectAmount(500)">₹500</button>
+          <button [class.selected]="selectedAmount === 1000"  (click)="selectAmount(1000)">₹1,000</button>
+          <button [class.selected]="selectedAmount === 2500"  (click)="selectAmount(2500)">₹2,500</button>
+          <button [class.selected]="selectedAmount === 5000"  (click)="selectAmount(5000)">₹5,000</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — QR Card -->
+    <div class="qr-card">
+      <div class="qr-header">
+        <h3>Scan & Pay</h3>
+        <p>Use any UPI app to donate instantly</p>
+      </div>
+
+      <div class="qr-box">
+        <!-- Dummy QR Code SVG -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="qr-svg">
+          <!-- Border -->
+          <rect width="200" height="200" fill="white"/>
+          <!-- Top-left finder -->
+          <rect x="10" y="10" width="60" height="60" fill="none" stroke="#222" stroke-width="4"/>
+          <rect x="20" y="20" width="40" height="40" fill="none" stroke="#222" stroke-width="4"/>
+          <rect x="28" y="28" width="24" height="24" fill="#222"/>
+          <!-- Top-right finder -->
+          <rect x="130" y="10" width="60" height="60" fill="none" stroke="#222" stroke-width="4"/>
+          <rect x="140" y="20" width="40" height="40" fill="none" stroke="#222" stroke-width="4"/>
+          <rect x="148" y="28" width="24" height="24" fill="#222"/>
+          <!-- Bottom-left finder -->
+          <rect x="10" y="130" width="60" height="60" fill="none" stroke="#222" stroke-width="4"/>
+          <rect x="20" y="140" width="40" height="40" fill="none" stroke="#222" stroke-width="4"/>
+          <rect x="28" y="148" width="24" height="24" fill="#222"/>
+          <!-- Data modules (dummy pattern) -->
+          <rect x="85" y="10" width="8" height="8" fill="#222"/>
+          <rect x="100" y="10" width="8" height="8" fill="#222"/>
+          <rect x="85" y="25" width="8" height="8" fill="#222"/>
+          <rect x="108" y="25" width="8" height="8" fill="#222"/>
+          <rect x="85" y="40" width="8" height="8" fill="#222"/>
+          <rect x="100" y="40" width="8" height="8" fill="#222"/>
+          <rect x="85" y="55" width="8" height="8" fill="#222"/>
+          <rect x="10" y="85" width="8" height="8" fill="#222"/>
+          <rect x="25" y="85" width="8" height="8" fill="#222"/>
+          <rect x="40" y="92" width="8" height="8" fill="#222"/>
+          <rect x="55" y="85" width="8" height="8" fill="#222"/>
+          <rect x="85" y="85" width="8" height="8" fill="#222"/>
+          <rect x="100" y="92" width="8" height="8" fill="#222"/>
+          <rect x="115" y="85" width="8" height="8" fill="#222"/>
+          <rect x="130" y="85" width="8" height="8" fill="#222"/>
+          <rect x="145" y="92" width="8" height="8" fill="#222"/>
+          <rect x="160" y="85" width="8" height="8" fill="#222"/>
+          <rect x="175" y="85" width="8" height="8" fill="#222"/>
+          <rect x="85" y="100" width="8" height="8" fill="#222"/>
+          <rect x="108" y="100" width="8" height="8" fill="#222"/>
+          <rect x="130" y="100" width="8" height="8" fill="#222"/>
+          <rect x="155" y="100" width="8" height="8" fill="#222"/>
+          <rect x="175" y="100" width="8" height="8" fill="#222"/>
+          <rect x="85" y="115" width="8" height="8" fill="#222"/>
+          <rect x="100" y="115" width="8" height="8" fill="#222"/>
+          <rect x="120" y="115" width="8" height="8" fill="#222"/>
+          <rect x="145" y="115" width="8" height="8" fill="#222"/>
+          <rect x="85" y="130" width="8" height="8" fill="#222"/>
+          <rect x="108" y="138" width="8" height="8" fill="#222"/>
+          <rect x="130" y="130" width="8" height="8" fill="#222"/>
+          <rect x="150" y="138" width="8" height="8" fill="#222"/>
+          <rect x="170" y="130" width="8" height="8" fill="#222"/>
+          <rect x="85" y="155" width="8" height="8" fill="#222"/>
+          <rect x="100" y="148" width="8" height="8" fill="#222"/>
+          <rect x="120" y="155" width="8" height="8" fill="#222"/>
+          <rect x="140" y="148" width="8" height="8" fill="#222"/>
+          <rect x="160" y="155" width="8" height="8" fill="#222"/>
+          <rect x="175" y="148" width="8" height="8" fill="#222"/>
+          <rect x="85" y="170" width="8" height="8" fill="#222"/>
+          <rect x="108" y="170" width="8" height="8" fill="#222"/>
+          <rect x="130" y="170" width="8" height="8" fill="#222"/>
+          <rect x="155" y="170" width="8" height="8" fill="#222"/>
+        </svg>
+
+        @if (selectedAmount) {
+          <div class="amount-badge">₹{{ selectedAmount.toLocaleString('en-IN') }}</div>
+        }
+      </div>
+
+      <div class="upi-info">
+        <p class="upi-id">UPI ID: <strong>msmepci&#64;upi</strong></p>
+        <p class="upi-name">Udyami Mitra Foundation</p>
+      </div>
+
+      <div class="upi-apps">
+        <span>Pay via</span>
+        <div class="app-tags">
+          <span>GPay</span>
+          <span>PhonePe</span>
+          <span>Paytm</span>
+          <span>BHIM</span>
+        </div>
+      </div>
+
+      <p class="secure-note">🔒 100% Secure · Donations may be eligible for 80G tax exemption</p>
+    </div>
+
+  </div>
+
+  <!-- Bottom Quote -->
+  <div class="quote-section">
+    <blockquote>
+      "एक छोटा कदम, एक बड़ा बदलाव।<br>आपका दान किसी के सपने को हकीकत बना सकता है।"
+    </blockquote>
+    <p>— Udyami Mitra Foundation</p>
+  </div>
+
+</div>
