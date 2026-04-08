@@ -1,30 +1,80 @@
-<nav class="navbar" [class.scrolled]="scrolled()">
-  <div class="nav-container">
-    <a class="logo" routerLink="/">
-      <span class="logo-icon">🏭</span>
-      <span class="logo-text">MSME<strong>PCI</strong></span>
-    </a>
 
-    <ul class="nav-links" [class.open]="menuOpen()">
-      <li><a routerLink="/"           routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Home</a></li>
-      <li><a routerLink="/about"      routerLinkActive="active" (click)="closeMenu()">About</a></li>
-      <li><a routerLink="/activities" routerLinkActive="active" (click)="closeMenu()">Activities</a></li>
-      <li><a routerLink="/gallery"    routerLinkActive="active" (click)="closeMenu()">Gallery</a></li>
-      <li><a routerLink="/contact"    routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
-    </ul>
 
-    <div class="nav-auth">
-      @if (auth.isLoggedIn()) {
-        <span class="user-name">👤 {{ auth.currentUser()?.name }}</span>
-        <button class="btn-logout" (click)="auth.logout()">Logout</button>
-      } @else {
-        <a routerLink="/auth" [queryParams]="{mode:'login'}"    class="btn-login">Login</a>
-        <a routerLink="/auth" [queryParams]="{mode:'register'}" class="btn-register">Sign Up</a>
-      }
+<header class="navbar">
+  <div class="top-bar">
+    <img src="assets/logo.png" class="logo" routerLink="/">
+
+    <div class="slogan hide-mobile">
+      <p>हमारा संकल्प, आपका साथ</p>
+      <p>रोजगार हो हर घर-हर हाथ</p>
     </div>
 
-    <button class="hamburger" (click)="toggleMenu()" [class.open]="menuOpen()">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
   </div>
-</nav>
+
+  <nav class="nav" [class.active]="isMenuOpen">
+    <ul class="nav-links">
+      <li><a routerLink="/" (click)="closeMenu()">Home</a></li>
+
+      <li class="dropdown" (mouseenter)="openDropdown('about')" (mouseleave)="closeDropdown('about')">
+        <button class="drop-toggle" (click)="toggleDropdown('about')">About ▼</button>
+        <ul class="dropdown-menu" [class.show]="dropdownState.about">
+          <li><a routerLink="/mission" (click)="closeMenu()">Mission</a></li>
+          <li><a routerLink="/vision" (click)="closeMenu()">Vision</a></li>
+          <li><a routerLink="/history" (click)="closeMenu()">History</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown" (mouseenter)="openDropdown('members')" (mouseleave)="closeDropdown('members')">
+        <button class="drop-toggle" (click)="toggleDropdown('members')">Members ▼</button>
+        <ul class="dropdown-menu" [class.show]="dropdownState.members">
+          <li><a routerLink="/register" (click)="closeMenu()">Register</a></li>
+          <li><a routerLink="/verify" (click)="closeMenu()">Verify</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown" (mouseenter)="openDropdown('committees')" (mouseleave)="closeDropdown('committees')">
+        <button class="drop-toggle" (click)="toggleDropdown('committees')">Committees ▼</button>
+        <ul class="dropdown-menu" [class.show]="dropdownState.committees">
+          <li><a routerLink="/central-committee" (click)="closeMenu()">Central</a></li>
+          <li><a routerLink="/district-committee" (click)="closeMenu()">District</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown" (mouseenter)="openDropdown('beneficiaries')" (mouseleave)="closeDropdown('beneficiaries')">
+        <button class="drop-toggle" (click)="toggleDropdown('beneficiaries')">Beneficiaries ▼</button>
+        <ul class="dropdown-menu" [class.show]="dropdownState.beneficiaries">
+          <li><a routerLink="/central-beneficiaries" (click)="closeMenu()">Central</a></li>
+          <li><a routerLink="/state-beneficiaries" (click)="closeMenu()">State</a></li>
+          <li><a routerLink="/district-beneficiaries" (click)="closeMenu()">District</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown" (mouseenter)="openDropdown('registration')" (mouseleave)="closeDropdown('registration')">
+        <button class="drop-toggle" (click)="toggleDropdown('registration')">Registration ▼</button>
+        <ul class="dropdown-menu" [class.show]="dropdownState.registration">
+          <li><a routerLink="/central-reg" (click)="closeMenu()">Central</a></li>
+          <li><a routerLink="/state-reg" (click)="closeMenu()">State</a></li>
+          <li><a routerLink="/district-reg" (click)="closeMenu()">District</a></li>
+        </ul>
+      </li>
+
+      <li class="dropdown" (mouseenter)="openDropdown('division')" (mouseleave)="closeDropdown('division')">
+        <button class="drop-toggle" (click)="toggleDropdown('division')">Division ▼</button>
+        <ul class="dropdown-menu" [class.show]="dropdownState.division">
+          <li><a routerLink="/central-div" (click)="closeMenu()">Central</a></li>
+          <li><a routerLink="/state-div" (click)="closeMenu()">State</a></li>
+          <li><a routerLink="/district-div" (click)="closeMenu()">District</a></li>
+        </ul>
+      </li>
+
+      <li><a routerLink="/media" (click)="closeMenu()">Media</a></li>
+      <li><a routerLink="/projects" (click)="closeMenu()">Upcoming Project</a></li>
+    </ul>
+
+    <div class="actions">
+      <button class="login" routerLink="/login">Login</button>
+      <button class="donate">Donate Us</button>
+    </div>
+  </nav>
+</header>

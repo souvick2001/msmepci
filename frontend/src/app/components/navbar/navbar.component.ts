@@ -11,13 +11,44 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  auth = inject(AuthService);
-  scrolled = signal(false);
-  menuOpen = signal(false);
 
-  @HostListener('window:scroll')
-  onScroll() { this.scrolled.set(window.scrollY > 50); }
+  isMenuOpen = false;
 
-  toggleMenu() { this.menuOpen.update(v => !v); }
-  closeMenu()  { this.menuOpen.set(false); }
+  dropdownState: any = {
+    about: false,
+    members: false,
+    committees: false,
+    registration: false
+  };
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  toggleDropdown(menu: string) {
+    // mobile click
+    if (window.innerWidth <= 992) {
+      Object.keys(this.dropdownState).forEach(key => {
+        this.dropdownState[key] = key === menu ? !this.dropdownState[key] : false;
+      });
+    }
+  }
+
+  openDropdown(menu: string) {
+    // desktop hover
+    if (window.innerWidth > 992) {
+      this.dropdownState[menu] = true;
+    }
+  }
+
+  closeDropdown(menu: string) {
+    if (window.innerWidth > 992) {
+      this.dropdownState[menu] = false;
+    }
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+    Object.keys(this.dropdownState).forEach(key => this.dropdownState[key] = false);
+  }
 }
