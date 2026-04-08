@@ -1,0 +1,21 @@
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Got Questions?</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      @for (item of faqs; track item.q; let i = $index) {
+        <div class="faq-item" [class.open]="openIndex() === i">
+          <button class="faq-question" (click)="toggle(i)">
+            <span>{{ item.q }}</span>
+            <span class="faq-icon">{{ openIndex() === i ? '−' : '+' }}</span>
+          </button>
+          <div class="faq-answer">
+            <p>{{ item.a }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/app/**/__pycache__/
+backend/*.pyc
+backend/.env
+backend/msmepci.db
+
+# Node / Angular
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp

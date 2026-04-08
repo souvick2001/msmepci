@@ -1,0 +1,18 @@
+<section class="activities" id="activities">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2>Our Core Activities</h2>
+      <p>Comprehensive support ecosystem for MSME growth and development</p>
+    </div>
+    <div class="activities-grid">
+      @for (act of activities; track act.title; let i = $index) {
+        <div class="activity-card" [style.animation-delay]="(i * 0.1) + 's'">
+          <div class="activity-icon">{{ act.icon }}</div>
+          <h3>{{ act.title }}</h3>
+          <p>{{ act.desc }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

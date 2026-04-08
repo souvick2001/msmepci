@@ -1,0 +1,38 @@
+.activities { padding: 6rem 0; background: #f8f9fa; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+.section-header {
+  text-align: center; margin-bottom: 4rem;
+
+  .section-label { color: #e8580a; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+  h2 { font-size: 2.2rem; font-weight: 900; color: #1a1a2e; margin-bottom: 1rem; }
+  p { color: #666; max-width: 500px; margin: 0 auto; }
+}
+
+.activities-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+
+.activity-card {
+  background: white; border-radius: 16px; padding: 2rem;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  animation: fadeUp 0.5s ease both;
+
+  &:hover {
+    border-color: #e8580a;
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(232,88,10,0.15);
+  }
+
+  .activity-icon { font-size: 2.8rem; margin-bottom: 1rem; }
+  h3 { font-size: 1.1rem; font-weight: 800; color: #1a1a2e; margin-bottom: 0.75rem; }
+  p { color: #666; line-height: 1.7; font-size: 0.95rem; }
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 900px) { .activities-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .activities-grid { grid-template-columns: 1fr; } }

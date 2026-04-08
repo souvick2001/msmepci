@@ -1,0 +1,39 @@
+@if (auth.showModal()) {
+  <div class="modal-overlay" (click)="close()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="close()">✕</button>
+
+      <div class="modal-logo">🏭 MSME<strong>PCI</strong></div>
+
+      <div class="modal-tabs">
+        <button [class.active]="auth.modalMode() === 'login'"    (click)="auth.modalMode.set('login')">Login</button>
+        <button [class.active]="auth.modalMode() === 'register'" (click)="auth.modalMode.set('register')">Sign Up</button>
+      </div>
+
+      <form (ngSubmit)="submit()">
+        @if (auth.modalMode() === 'register') {
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" [(ngModel)]="name" name="name" placeholder="Your full name" required />
+          </div>
+        }
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Min. 8 characters" required />
+        </div>
+
+        @if (error()) {
+          <div class="error-msg">⚠️ {{ error() }}</div>
+        }
+
+        <button type="submit" class="submit-btn" [disabled]="loading()">
+          {{ loading() ? 'Please wait…' : (auth.modalMode() === 'login' ? 'Login' : 'Create Account') }}
+        </button>
+      </form>
+    </div>
+  </div>
+}

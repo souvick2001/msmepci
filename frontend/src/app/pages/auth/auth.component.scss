@@ -1,0 +1,484 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+// ── Variables ──────────────────────────────────────────────
+$brand:       #E85D04;
+$brand-dark:  #C44A00;
+$dark:        #0F0F10;
+$dark-2:      #1A1A1C;
+$dark-3:      #242428;
+$text:        #1A1A1C;
+$text-muted:  #6B6B7A;
+$text-light:  #9B9BAA;
+$border:      #E8E8EE;
+$bg:          #F7F7F9;
+$white:       #FFFFFF;
+$success:     #16A34A;
+$error:       #DC2626;
+
+// ── Reset & Base ───────────────────────────────────────────
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.auth-page {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Sora', sans-serif;
+  background: $bg;
+}
+
+// ── LEFT PANEL ─────────────────────────────────────────────
+.auth-left {
+  position: relative;
+  width: 42%;
+  background: $dark;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  @media (max-width: 900px) { display: none; }
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+
+  &-1 {
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba($brand, 0.35) 0%, transparent 70%);
+    top: -80px; right: -80px;
+  }
+  &-2 {
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba($brand, 0.15) 0%, transparent 70%);
+    bottom: 60px; left: -60px;
+  }
+  &-3 {
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.left-content {
+  position: relative;
+  z-index: 2;
+  padding: 48px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(white, 0.45);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+
+  &:hover { color: rgba(white, 0.8); }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .brand-mark {
+    width: 36px; height: 36px;
+    background: rgba(white, 0.06);
+    border: 1px solid rgba(white, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-name {
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(white, 0.5);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'Sora', sans-serif;
+
+    strong {
+      color: $white;
+      font-weight: 600;
+    }
+  }
+}
+
+.left-hero {
+  flex: 1;
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba($brand, 0.15);
+    border: 1px solid rgba($brand, 0.3);
+    color: $brand;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+
+    &::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: $brand;
+      border-radius: 50%;
+    }
+  }
+
+  h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(42px, 4vw, 58px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: $white;
+    margin-bottom: 20px;
+
+    em {
+      font-style: italic;
+      color: $brand;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(white, 0.45);
+    line-height: 1.7;
+    max-width: 280px;
+  }
+}
+
+.left-stats {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(white, 0.08);
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .num {
+      font-size: 22px;
+      font-weight: 600;
+      color: $white;
+      letter-spacing: -0.02em;
+    }
+
+    .lbl {
+      font-size: 11px;
+      color: rgba(white, 0.35);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+  }
+
+  .stat-sep {
+    width: 1px;
+    height: 32px;
+    background: rgba(white, 0.1);
+  }
+}
+
+// ── RIGHT PANEL ────────────────────────────────────────────
+.auth-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background: $bg;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 420px;
+  background: $white;
+  border-radius: 20px;
+  padding: 36px;
+  border: 1px solid $border;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+
+  @media (max-width: 480px) { padding: 28px 20px; border-radius: 16px; }
+}
+
+.card-header {
+  margin-bottom: 28px;
+
+  .card-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: $text;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
+// ── Tabs ───────────────────────────────────────────────────
+.tabs {
+  position: relative;
+  display: flex;
+  background: $bg;
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 28px;
+  border: 1px solid $border;
+}
+
+.tab-slider {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: calc(50% - 3px);
+  height: calc(100% - 6px);
+  background: $white;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &.right { transform: translateX(100%); }
+}
+
+.tab {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 9px 0;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: $text-muted;
+  border-radius: 7px;
+  transition: color 0.2s;
+
+  &.active {
+    color: $text;
+    font-weight: 600;
+  }
+}
+
+// ── Form Heading ───────────────────────────────────────────
+.form-heading {
+  margin-bottom: 24px;
+
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: $text;
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 13px;
+    color: $text-muted;
+    font-weight: 300;
+  }
+}
+
+// ── Fields ─────────────────────────────────────────────────
+.field {
+  margin-bottom: 16px;
+
+  label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 500;
+    color: $text;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+}
+
+.forgot-link {
+  color: $brand;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: 0;
+
+  &:hover { text-decoration: underline; }
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .field-icon {
+    position: absolute;
+    left: 14px;
+    color: $text-light;
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  input {
+    width: 100%;
+    height: 44px;
+    background: $bg;
+    border: 1.5px solid $border;
+    border-radius: 10px;
+    padding: 0 44px 0 40px;
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: $text;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+
+    &::placeholder { color: $text-light; }
+
+    &:focus {
+      border-color: $brand;
+      background: $white;
+      box-shadow: 0 0 0 3px rgba($brand, 0.08);
+    }
+  }
+}
+
+.eye-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $text-light;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s;
+
+  &:hover { color: $text-muted; }
+}
+
+// ── Alerts ─────────────────────────────────────────────────
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+
+  &-error {
+    background: rgba($error, 0.06);
+    color: $error;
+    border: 1px solid rgba($error, 0.15);
+  }
+  &-success {
+    background: rgba($success, 0.06);
+    color: $success;
+    border: 1px solid rgba($success, 0.15);
+  }
+}
+
+// ── Submit ─────────────────────────────────────────────────
+.submit-btn {
+  width: 100%;
+  height: 46px;
+  margin-top: 8px;
+  background: $dark;
+  color: $white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  letter-spacing: 0.01em;
+
+  svg { transition: transform 0.2s; }
+
+  &:hover:not(:disabled) {
+    background: $brand;
+    box-shadow: 0 6px 20px rgba($brand, 0.3);
+    svg { transform: translateX(3px); }
+  }
+
+  &:active:not(:disabled) { transform: scale(0.98); }
+
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  &.loading { background: $dark-3; }
+}
+
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(white, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ── Switch Hint ────────────────────────────────────────────
+.switch-hint {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: $text-muted;
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $brand;
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0;
+    margin-left: 4px;
+    transition: opacity 0.2s;
+
+    &:hover { opacity: 0.75; }
+  }
+}

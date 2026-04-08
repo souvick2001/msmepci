@@ -1,0 +1,77 @@
+.about { padding: 6rem 0; background: #fff; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+
+.about-images {
+  position: relative; height: 420px;
+
+  .img-box {
+    position: absolute; border-radius: 16px; overflow: hidden;
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+    display: flex; align-items: center; justify-content: center;
+
+    .img-placeholder { font-size: 4rem; }
+  }
+
+  .img-box-1 { width: 70%; height: 300px; top: 0; left: 0; }
+  .img-box-2 { width: 55%; height: 220px; bottom: 0; right: 0;
+    border: 4px solid white; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+
+  .experience-badge {
+    position: absolute; bottom: 60px; left: -10px;
+    background: #e8580a; color: white; padding: 1rem 1.5rem;
+    border-radius: 12px; display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 8px 24px rgba(232,88,10,0.4);
+    animation: pulse 2s ease-in-out infinite;
+
+    strong { font-size: 2rem; font-weight: 900; line-height: 1; }
+    span { font-size: 0.75rem; opacity: 0.9; }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.section-label {
+  color: #e8580a; font-weight: 700; font-size: 0.9rem;
+  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem;
+}
+
+h2 { font-size: 2.2rem; font-weight: 900; color: #1a1a2e; margin-bottom: 1.2rem; line-height: 1.2; }
+
+p { color: #555; line-height: 1.8; margin-bottom: 1.5rem; }
+
+.feature-list {
+  list-style: none; padding: 0; margin-bottom: 2rem;
+
+  li {
+    padding: 0.5rem 0; color: #333; font-weight: 500;
+    display: flex; align-items: center; gap: 0.75rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .check {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #e8580a; color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+  }
+}
+
+.read-more {
+  color: #e8580a; font-weight: 700; text-decoration: none;
+  font-size: 1rem; border-bottom: 2px solid #e8580a; padding-bottom: 2px;
+  transition: all 0.2s;
+  &:hover { gap: 0.5rem; }
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-images { height: 280px; }
+}
