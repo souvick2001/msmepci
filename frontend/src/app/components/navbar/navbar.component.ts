@@ -12,21 +12,30 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent {
 
-  isMenuOpen = false;
+  auth = inject(AuthService);
 
+  isMenuOpen = false;
+  userDropOpen = false;
   dropdownState: any = {
     about: false,
     members: false,
     committees: false,
-    registration: false
+    registration: false,
+    beneficiaries: false,
+    division: false
   };
+
+  openLogin() {
+    this.auth.modalMode.set('login');
+    this.auth.showModal.set(true);
+    this.closeMenu();
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
   toggleDropdown(menu: string) {
-    // mobile click
     if (window.innerWidth <= 992) {
       Object.keys(this.dropdownState).forEach(key => {
         this.dropdownState[key] = key === menu ? !this.dropdownState[key] : false;
@@ -35,7 +44,6 @@ export class NavbarComponent {
   }
 
   openDropdown(menu: string) {
-    // desktop hover
     if (window.innerWidth > 992) {
       this.dropdownState[menu] = true;
     }
@@ -50,5 +58,10 @@ export class NavbarComponent {
   closeMenu() {
     this.isMenuOpen = false;
     Object.keys(this.dropdownState).forEach(key => this.dropdownState[key] = false);
+  }
+
+  logout() {
+    this.auth.logout();
+    this.closeMenu();
   }
 }

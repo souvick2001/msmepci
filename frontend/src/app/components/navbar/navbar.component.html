@@ -1,14 +1,10 @@
-
-
 <header class="navbar">
   <div class="top-bar">
     <img src="assets/logo.png" class="logo" routerLink="/">
-
     <div class="slogan hide-mobile">
       <p>हमारा संकल्प, आपका साथ</p>
       <p>रोजगार हो हर घर-हर हाथ</p>
     </div>
-
     <button class="menu-toggle" (click)="toggleMenu()">☰</button>
   </div>
 
@@ -73,8 +69,19 @@
     </ul>
 
     <div class="actions">
-      <button class="login" routerLink="/login">Login</button>
+      @if (auth.currentUser()) {
+        <div class="user-menu" (mouseenter)="userDropOpen = true" (mouseleave)="userDropOpen = false">
+          <button class="user-btn">👤 {{ auth.currentUser()?.name }} ▼</button>
+          <ul class="user-dropdown" [class.show]="userDropOpen">
+            <!--<li><a routerLink="/profile" (click)="closeMenu()">My Profile</a></li> -->
+            <li><button (click)="logout()">Logout</button></li>
+          </ul>
+        </div>
+      } @else {
+        <button class="login" (click)="openLogin()">Login</button>
+      }
       <button class="donate">Donate Us</button>
     </div>
+
   </nav>
 </header>
