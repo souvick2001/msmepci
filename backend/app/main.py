@@ -3,7 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.database import engine, Base
 from app.routers import auth
+from app.routers import contact
 import app.models.user
+import app.models.contact
 
 Base.metadata.create_all(bind=engine)
 
@@ -18,6 +20,7 @@ app.add_middleware(
 )
 
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth"])
+app.include_router(contact.router, tags=["Contact"])
 
 @app.get("/health")
 def health():
